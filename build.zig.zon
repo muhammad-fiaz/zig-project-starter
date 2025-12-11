@@ -1,0 +1,67 @@
+.{
+    // This is the package manifest (ZON) for the repository.
+    // Important notes:
+    // - `name` is typed as an enum literal (e.g. `.project`) to match typed manifests,
+    //   which avoids parser errors like "expected enum literal".
+    // - For remote dependencies you must set `url` and a computed `hash` (multihash).
+    // - Alternatively, use `path` to vendor dependencies locally.
+    // - Keep `paths` in-sync with files that should be included in the package hash.
+
+    // Human-friendly enum-like package identifier (do not quote).
+    .name = .project,
+
+    // Package version (semver).
+    .version = "0.1.0",
+
+    // A persistent package fingerprint (do not change lightly) — updated to
+    // the value suggested by the Zig CLI when you ran `zig build`.
+    .fingerprint = 0x2fb3d0ee50ef053b,
+
+    // Minimum Zig version to support.
+    .minimum_zig_version = "0.15.1",
+
+    // Basic metadata.
+    .description = "Zig Project Starter: minimal template with build, tests, and examples",
+    .license = "MIT",
+    .authors = .{"muhammad-fiaz"},
+
+    // Dependency table:
+    // - Use `url` + `hash` for remote pinned dependencies (recommended for reproducibility),
+    // - Use `path` to vendor dependencies locally (useful for offline dev).
+    .dependencies = .{
+        // Remote dependency example for "logly" (muhammad-fiaz/logly.zig).
+        // To use this, fetch the dependency and compute the actual multihash,
+        // then replace "Qm...PLACEHOLDER..." with the computed multihash.
+        //
+        // .logly = .{
+        //     .url = "https://github.com/muhammad-fiaz/logly.zig",
+        //     .hash = "Qm...PLACEHOLDER...", // replace with computed multihash
+        //     .lazy = false,
+        // },
+
+        // If you prefer to vendor the package locally, uncomment and set `path`:
+        //
+        // .logly = .{
+        //     .path = "vendor/logly",
+        //     .lazy = false,
+        // },
+    },
+
+    // Files/directories included in the package hash & distribution.
+    .paths = .{
+        "build.zig",
+        "build.zig.zon",
+        "src",
+        "examples",
+        "LICENSE",
+        "README.md",
+    },
+
+    // Optional entries that tooling may use.
+    .examples = .{
+        .{ .name = "basic", .path = "examples/basic.zig" },
+    },
+
+    // Optional: test files that may be referenced by tooling.
+    .tests = .{"tests/lib_test.zig"},
+}
