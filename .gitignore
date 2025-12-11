@@ -1,0 +1,63 @@
+# Zig Project Starter - .gitignore
+# Ignore common build artifacts, caches and editor files
+
+# Zig build artifacts and caches
+zig-cache/
+zig-out/
+.zig-cache/
+
+# Dependency caches (if any other tooling creates them)
+# Keep your dependency sources under version control if you intentionally vendor them.
+# Otherwise, ignore the generated cache directories created by `zig fetch` and other tools.
+zig-cache/deps/
+zig-cache/obj/
+
+# Build artifacts
+*.o
+*.obj
+*.a
+*.lib
+*.so
+*.dll
+*.dylib
+*.exe
+*.pdb
+
+# Temporary files / OS
+.DS_Store
+Thumbs.db
+desktop.ini
+*.bak
+*.tmp
+
+# Editor directories and files (IDE-specific)
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+*.iml
+
+# Vim swap & temp files
+*.swp
+*.swo
+*~
+
+# Logs and reports
+*.log
+coverage/
+cov-report/
+
+# Archive and packaged files
+*.zip
+*.tar.gz
+*.tar.xz
+
+# Environment files
+.env
+.env.local
+
+# If you vendor dependencies in a folder named vendor/ or zig-modules/, ignore compiled artifacts only:
+vendor/**/zig-cache/
+vendor/**/zig-out/
+
+# End of file - keep checked-in files small and focused on source and config only.
